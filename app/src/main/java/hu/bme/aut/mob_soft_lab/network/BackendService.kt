@@ -21,7 +21,7 @@ class BackendService : IBackendService {
     }.build()
     private val retrofitService by lazy {
         Retrofit.Builder()
-            .baseUrl("https://anapioficeandfire.com/api/characters")
+            .baseUrl("https://anapioficeandfire.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

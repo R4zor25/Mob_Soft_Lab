@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import hu.bme.aut.mob_soft_lab.persistence.AppDatabase
+import hu.bme.aut.mob_soft_lab.persistence.GotCharacterTypeConverter
 import hu.bme.aut.mob_soft_lab.persistence.UserDao
 import javax.inject.Singleton
 
@@ -25,7 +26,8 @@ object PersistenceModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "User"
-        ).build()
+            "Users"
+        ).addTypeConverter(GotCharacterTypeConverter())
+            .build()
     }
 }

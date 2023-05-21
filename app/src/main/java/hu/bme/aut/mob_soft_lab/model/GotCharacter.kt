@@ -1,5 +1,9 @@
 package hu.bme.aut.mob_soft_lab.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class GotCharacter(
     val aliases: List<String> = emptyList(),
     val allegiances: List<String> = emptyList(),
@@ -16,4 +20,4 @@ data class GotCharacter(
     val titles: List<String> = emptyList(),
     val tvSeries: List<String> = emptyList(),
     val url: String = ""
-)
+) : Parcelable

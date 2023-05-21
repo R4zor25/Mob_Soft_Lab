@@ -9,11 +9,11 @@ import retrofit2.http.Query
 interface IRetrofitService {
 
     //get characters with paging
-    @GET("")
+    @GET("characters")
     fun getCharactersWithPaging(@Query("page") page: Int, @Query("pageSize")pageSize: Int): Call<List<GotCharacter>>
 
     //get character details
-    @GET("{characterId}")
+    @GET("characters/{characterId}")
     fun getCharacterById(@Path("characterId") characterId: Long): Call<GotCharacter>
 
 }
