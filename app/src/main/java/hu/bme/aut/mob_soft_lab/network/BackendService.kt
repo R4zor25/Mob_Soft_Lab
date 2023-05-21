@@ -9,7 +9,7 @@ import javax.inject.Singleton
 interface IBackendService{
 
     fun getCharactersByPaging(page: Int, pageSize: Int = 50) : List<GotCharacter>
-    fun getCharacterById(characterId: Long): GotCharacter
+    fun getCharacterById(characterId: Long): GotCharacter?
 
 }
 
@@ -33,7 +33,7 @@ class BackendService : IBackendService {
         return response.body() as List<GotCharacter>
     }
 
-    override fun getCharacterById(characterId: Long): GotCharacter {
+    override fun getCharacterById(characterId: Long): GotCharacter? {
         val response = retrofitService.getCharacterById(characterId).execute()
         return response.body() as GotCharacter
     }
