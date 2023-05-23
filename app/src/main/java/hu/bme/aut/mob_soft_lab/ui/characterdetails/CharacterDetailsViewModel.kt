@@ -34,12 +34,6 @@ class CharacterDetailsViewModel @Inject constructor() : ViewModel() {
     private val _oneShotEvents = Channel<CharacterDetailsOneShotEvent>(Channel.BUFFERED)
     val oneShotEvent = _oneShotEvents.receiveAsFlow()
 
-    init {
-        coroutineScope.launch(Dispatchers.IO) {
-
-        }
-    }
-
     fun onAction(characterDetailsUiAction: CharacterDetailsUiAction){
         when(characterDetailsUiAction){
 
@@ -47,10 +41,10 @@ class CharacterDetailsViewModel @Inject constructor() : ViewModel() {
                 viewModelScope.launch(Dispatchers.IO) {
                     if (isCharacterLoved(characterDetailsUiAction.gotCharacter)) {
                         UserRepository.loggedInUserEntity?.lovedCharacterList?.characterList?.remove(characterDetailsUiAction.gotCharacter)
-                        userRepository.insertUser(UserRepository.loggedInUserEntity!!)
+                        userRepository.updateUser(UserRepository.loggedInUserEntity!!)
                     } else {
                         UserRepository.loggedInUserEntity?.lovedCharacterList?.characterList?.add(characterDetailsUiAction.gotCharacter)
-                        userRepository.insertUser(UserRepository.loggedInUserEntity!!)
+                        userRepository.updateUser(UserRepository.loggedInUserEntity!!)
                     }
                     _oneShotEvents.send(CharacterDetailsOneShotEvent.CharacterStateChanged)
                 }

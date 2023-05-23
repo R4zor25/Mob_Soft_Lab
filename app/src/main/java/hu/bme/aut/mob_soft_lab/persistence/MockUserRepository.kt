@@ -25,4 +25,8 @@ class MockUserRepository : IUserRepository {
             mockList.add(user)
         }
     }
+
+    override fun updateUser(user: UserEntity) {
+        mockList[mockList.indexOfFirst { it.userName == user.userName }] = user
+    }
 }

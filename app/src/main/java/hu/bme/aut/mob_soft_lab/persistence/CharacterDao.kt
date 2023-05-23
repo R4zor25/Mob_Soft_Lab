@@ -13,5 +13,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: UserEntity)
 
-
+    @Update(entity = UserEntity::class)
+    fun updateUser(user: UserEntity)
 }

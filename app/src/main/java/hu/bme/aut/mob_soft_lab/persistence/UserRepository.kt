@@ -7,6 +7,8 @@ import javax.inject.Singleton
 interface IUserRepository{
     fun getUserByUserName(userName: String): UserEntity?
     fun insertUser(user: UserEntity)
+
+    fun updateUser(user: UserEntity)
 }
 
 @Singleton
@@ -24,6 +26,11 @@ class UserRepository @Inject constructor(
 
     override fun insertUser(user: UserEntity) {
         userDao.insertUser(user)
+        loggedInUserEntity = userDao.getUserByName(user.userName)
+    }
+
+    override fun updateUser(user: UserEntity) {
+        userDao.updateUser(user)
         loggedInUserEntity = user
     }
 

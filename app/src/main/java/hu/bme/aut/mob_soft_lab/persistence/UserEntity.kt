@@ -8,8 +8,8 @@ import hu.bme.aut.mob_soft_lab.model.GotCharacterList
 
 @Entity("users")
 data class UserEntity (
-    @PrimaryKey(autoGenerate = true) val
-    id: Long = 0L,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0L,
 
     val userName: String = "",
 
